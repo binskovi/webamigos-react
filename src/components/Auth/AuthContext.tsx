@@ -1,12 +1,15 @@
 import { createContext } from "react";
 
-const defaultValues = {
-  // domyślana wartość na false
+type AuthContextType = {
+  isLoggedIn: boolean;
+  toggleValue: () => void;
+}
+
+const defaultValues: AuthContextType = {
   isLoggedIn: false,
+  toggleValue: () => null,
 };
 
-type AuthContextType = typeof defaultValues;
-
 export const AuthContext = createContext<AuthContextType>(defaultValues);
-// korzystamy z Providera
-// AuthContext.Provider
+
+AuthContext.displayName = "AuthContext";

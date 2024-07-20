@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import { AuthContext } from './components/Auth/AuthContext';
 import { AuthInfo } from './components/Auth/AuthInfo';
@@ -8,6 +9,12 @@ import { AuthInfo } from './components/Auth/AuthInfo';
 
 function App() {
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const toggleValue = () => {
+    setIsLoggedIn((value) => !value);
+  }
+
   return (
     <>
       { /* <Generator /> */}
@@ -17,7 +24,7 @@ function App() {
       {/* <RegistrationFormRefsCustomInput /> */}
       {/* <RegistrationFormRefsHookForm /> */}
       {/* <ViewPort/> */}
-      <AuthContext.Provider value={{ isLoggedIn: true }}>
+      <AuthContext.Provider value={{ isLoggedIn, toggleValue }}>
         <AuthInfo/>
       </AuthContext.Provider>
     </>
